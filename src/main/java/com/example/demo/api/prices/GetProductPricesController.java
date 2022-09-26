@@ -1,6 +1,5 @@
 package com.example.demo.api.prices;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +16,6 @@ public class GetProductPricesController {
 
     private final FindProductPriceService findProductPriceService;
 
-    @Autowired
     public GetProductPricesController(FindProductPriceService findProductPriceService) {
         this.findProductPriceService = findProductPriceService;
     }
