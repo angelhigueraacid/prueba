@@ -26,10 +26,9 @@ public class GetProductPricesController {
     @ResponseBody
     public ProductPriceDetailsDto productPrice(
             @RequestBody FindProductPriceDto findProductPriceDto) {
-        Long productId = findProductPriceDto.getProductId();
         ProductPrice productPrice = this.findProductPriceService
                 .execute(new FindProductPriceParams(findProductPriceDto.getInDate(),
-                        findProductPriceDto.getBrandId(), productId));
+                        findProductPriceDto.getBrandId(), findProductPriceDto.getProductId()));
         return new ProductPriceDetailsDto(productPrice);
     }
 
