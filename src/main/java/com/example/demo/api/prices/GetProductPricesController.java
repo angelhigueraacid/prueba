@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.api.prices.dtos.ProductPriceDetailsDto;
 import com.example.demo.api.prices.dtos.FindProductPriceDto;
-import com.example.demo.prices.domain.FindProductPriceParams;
 import com.example.demo.prices.domain.ProductPrice;
 import com.example.demo.prices.services.FindProductPriceService;
 
@@ -24,9 +23,8 @@ public class GetProductPricesController {
     @ResponseBody
     public ProductPriceDetailsDto productPrice(
             @RequestBody FindProductPriceDto findProductPriceDto) {
-        ProductPrice productPrice = this.findProductPriceService
-                .execute(new FindProductPriceParams(findProductPriceDto.getInDate(),
-                        findProductPriceDto.getBrandId(), findProductPriceDto.getProductId()));
+        ProductPrice productPrice = this.findProductPriceService.execute(findProductPriceDto.getProductId(),
+                findProductPriceDto.getBrandId(), findProductPriceDto.getInDate());
         return new ProductPriceDetailsDto(productPrice);
     }
 
