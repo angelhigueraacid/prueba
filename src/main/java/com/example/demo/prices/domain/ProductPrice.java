@@ -38,7 +38,7 @@ public class ProductPrice {
     public ProductPrice(Long brandId, Long productId, Long priceListId, int priority, Double finalPrice,
             Currency currency, Date startingDate, Date endingDate) {
         this.brandId = brandId;
-        this.priceListId = productId;
+        this.productId = productId;
         this.priceListId = priceListId;
         this.priority = priority;
         this.finalPrice = finalPrice;
