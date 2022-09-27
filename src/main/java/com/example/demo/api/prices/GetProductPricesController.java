@@ -1,12 +1,14 @@
 package com.example.demo.api.prices;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.api.prices.dtos.ProductPriceDetailsDto;
-import com.example.demo.api.prices.dtos.FindProductPriceDto;
 import com.example.demo.prices.domain.ProductPrice;
 import com.example.demo.prices.services.FindProductPriceService;
 
@@ -22,9 +24,9 @@ public class GetProductPricesController {
     @GetMapping("/prices")
     @ResponseBody
     public ProductPriceDetailsDto productPrice(
-            @RequestBody FindProductPriceDto findProductPriceDto) {
-        ProductPrice productPrice = this.findProductPriceService.execute(findProductPriceDto.getProductId(),
-                findProductPriceDto.getBrandId(), findProductPriceDto.getInDate());
+            @RequestParam Long productId, @RequestParam Long brandId,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date inDate) {
+        ProductPrice productPrice = this.findProductPriceService.execute(productId, brandId, inDate);
         return new ProductPriceDetailsDto(productPrice);
     }
 
