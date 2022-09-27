@@ -14,15 +14,15 @@ import com.example.demo.prices.domain.ProductPriceRepository;
 @Service
 public class FindProductPriceService {
 
-    private ProductPriceRepository repo;
+    private ProductPriceRepository productPriceRepository;
 
-    public FindProductPriceService(ProductPriceRepository repo) {
-        this.repo = repo;
+    public FindProductPriceService(ProductPriceRepository productPriceRepository) {
+        this.productPriceRepository = productPriceRepository;
     }
 
     public ProductPrice execute(Long productId, Long brandId, Date inDate) {
 
-        List<ProductPrice> productPrices = this.repo.findByProductIdAndBrandIdInDate(productId,
+        List<ProductPrice> productPrices = this.productPriceRepository.findByProductIdAndBrandIdInDate(productId,
                 brandId, inDate,
                 Sort.by(Direction.DESC, "priority"));
 

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -28,8 +30,10 @@ public class ProductPrice {
 
     private Currency currency;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startingDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endingDate;
 
     protected ProductPrice() {
